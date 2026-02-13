@@ -1,7 +1,4 @@
-"use client";
-
-import PropertyDetailsPage from "@/components/PropertyDetails";
-import { useRouter } from "next/navigation";
+import PropertyDetailsPageWrapper from "@/components/PropertyDetailsWrapper";
 
 // Mock property data - in a real app, this would come from a database
 const propertyDatabase = {
@@ -14,9 +11,11 @@ const propertyDatabase = {
     beds: 4,
     baths: 3,
     sqft: 2800,
-    image: "https://images.unsplash.com/photo-1600596542815-ffad4c0c4b00?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1600596542815-ffad4c0c4b00?w=800&q=80",
     type: "For Sale",
-    description: "Stunning modern villa with premium finishes, smart home technology, and breathtaking views. This 4-bedroom residence features an open-concept living area, chef's kitchen, and heated pool.",
+    description:
+      "Stunning modern villa with premium finishes, smart home technology, and breathtaking views. This 4-bedroom residence features an open-concept living area, chef's kitchen, and heated pool.",
     features: [
       "Open Concept Living",
       "Designer Kitchen",
@@ -41,7 +40,8 @@ const propertyDatabase = {
     beds: 3,
     baths: 3,
     sqft: 1950,
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
     type: "Featured",
     description:
       "Luxurious penthouse in the heart of downtown Toronto. Floor-to-ceiling windows with panoramic city views, premium appliances, and exclusive access to building amenities.",
@@ -69,7 +69,8 @@ const propertyDatabase = {
     beds: 5,
     baths: 4,
     sqft: 3200,
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80",
+    image:
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80",
     type: "New Listing",
     description:
       "Spacious suburban home perfect for families. 5 bedrooms, 4 bathrooms, modern kitchen, and large backyard. Located in a quiet neighborhood with excellent schools.",
@@ -110,23 +111,11 @@ export default async function PropertyDetailsRoute({
           Property Not Found
         </h1>
         <p className="text-slate-600 mb-8">
-          Sorry, we couldn't find the property you're looking for.
+          Sorry, we couldnot find the property you are looking for.
         </p>
       </div>
     );
   }
 
-  return (
-    <PropertyDetailsPageWrapper property={property} />
-  );
-}
-
-function PropertyDetailsPageWrapper({ property }: any) {
-  const router = useRouter();
-
-  const handleBack = () => {
-    router.back();
-  };
-
-  return <PropertyDetailsPage property={property} onBack={handleBack} />;
+  return <PropertyDetailsPageWrapper property={property} />;
 }
