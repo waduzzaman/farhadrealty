@@ -1,4 +1,5 @@
 import AboutBrief from "@/components/AboutBrief";
+import OptimizedImage from "@/components/OptimizedImage";
 
 export default function AboutPage() {
   return (
@@ -25,15 +26,12 @@ export default function AboutPage() {
             {/* Left Column - Professional Image */}
             <div className="relative">
               <div className="relative w-full h-96 md:h-[500px] rounded-3xl shadow-2xl overflow-hidden bg-slate-200 flex items-center justify-center">
-                <img
+                <OptimizedImage
                   src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
                   alt="Farhad - Principal Consultant at Farhad Realty"
                   className="w-full h-full object-cover"
                   loading="eager"
                   style={{ aspectRatio: '3/4' }}
-                  onError={(e) => {
-                    e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="400" height="533"%3E%3Crect fill="%23cbd5e1" width="400" height="533"/%3E%3Ctext x="50%25" y="50%25" font-family="Arial" font-size="16" fill="%2364748b" text-anchor="middle" dominant-baseline="middle"%3EFarhad Profile%3C/text%3E%3C/svg%3E';
-                  }}
                 />
               </div>
               <div className="absolute -top-6 -left-6 w-32 h-32 bg-amber-400 rounded-full opacity-20 blur-2xl"></div>

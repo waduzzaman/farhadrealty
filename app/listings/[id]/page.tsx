@@ -1,7 +1,24 @@
 import PropertyDetailsPageWrapper from "@/components/PropertyDetailsWrapper";
 
-// Mock property data - in a real app, this would come from a database
-const propertyDatabase = {
+// 1. Define the Interface strictly to match your component's needs
+interface Property {
+  id: string;
+  title: string;
+  price: string;
+  priceNumeric: number;
+  location: string;
+  beds: number;
+  baths: number;
+  sqft: number;
+  image: string;
+  type: string;
+  description: string;
+  features: string[];
+  gallery: string[];
+}
+
+// 2. Type the database as a Record of Property objects
+const propertyDatabase: Record<string, Property> = {
   "1": {
     id: "1",
     title: "Modern Villa",
@@ -11,25 +28,11 @@ const propertyDatabase = {
     beds: 4,
     baths: 3,
     sqft: 2800,
-    image:
-      "https://images.unsplash.com/photo-1600596542815-ffad4c0c4b00?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1600596542815-ffad4c0c4b00?w=800&q=80",
     type: "For Sale",
-    description:
-      "Stunning modern villa with premium finishes, smart home technology, and breathtaking views. This 4-bedroom residence features an open-concept living area, chef's kitchen, and heated pool.",
-    features: [
-      "Open Concept Living",
-      "Designer Kitchen",
-      "Smart Home Technology",
-      "Heated Pool",
-      "Wine Cellar",
-      "Home Theater",
-      "Gourmet Appliances",
-      "Radiant Floor Heating",
-    ],
-    gallery: [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
-      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80",
-    ],
+    description: "Stunning modern villa with premium finishes, smart home technology, and breathtaking views.",
+    features: ["Open Concept Living", "Designer Kitchen", "Smart Home Technology", "Heated Pool"],
+    gallery: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"],
   },
   "2": {
     id: "2",
@@ -40,25 +43,11 @@ const propertyDatabase = {
     beds: 3,
     baths: 3,
     sqft: 1950,
-    image:
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
     type: "Featured",
-    description:
-      "Luxurious penthouse in the heart of downtown Toronto. Floor-to-ceiling windows with panoramic city views, premium appliances, and exclusive access to building amenities.",
-    features: [
-      "City Views",
-      "Floor to Ceiling Windows",
-      "Concierge Service",
-      "Rooftop Access",
-      "Premium Appliances",
-      "In-Unit Laundry",
-      "Private Balcony",
-      "Valet Parking",
-    ],
-    gallery: [
-      "https://images.unsplash.com/photo-1600596542815-ffad4c0c4b00?w=800&q=80",
-      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80",
-    ],
+    description: "Luxurious penthouse in the heart of downtown Toronto. Floor-to-ceiling windows with panoramic city views.",
+    features: ["City Views", "Floor to Ceiling Windows", "Concierge Service", "Rooftop Access"],
+    gallery: ["https://images.unsplash.com/photo-1600596542815-ffad4c0c4b00?w=800&q=80"],
   },
   "3": {
     id: "3",
@@ -69,25 +58,11 @@ const propertyDatabase = {
     beds: 5,
     baths: 4,
     sqft: 3200,
-    image:
-      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&q=80",
     type: "New Listing",
-    description:
-      "Spacious suburban home perfect for families. 5 bedrooms, 4 bathrooms, modern kitchen, and large backyard. Located in a quiet neighborhood with excellent schools.",
-    features: [
-      "Large Backyard",
-      "Quiet Neighborhood",
-      "Modern Kitchen",
-      "Garage",
-      "Master Suite",
-      "Home Office",
-      "Deck",
-      "Finished Basement",
-    ],
-    gallery: [
-      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80",
-      "https://images.unsplash.com/photo-1600596542815-ffad4c0c4b00?w=800&q=80",
-    ],
+    description: "Spacious suburban home perfect for families. Located in a quiet neighborhood with excellent schools.",
+    features: ["Large Backyard", "Quiet Neighborhood", "Modern Kitchen", "Garage"],
+    gallery: ["https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80"],
   },
 };
 
@@ -97,12 +72,14 @@ interface PropertyDetailsPageProps {
   }>;
 }
 
+// 3. The Main Route Component
 export default async function PropertyDetailsRoute({
   params,
 }: PropertyDetailsPageProps) {
   const { id } = await params;
-  const property =
-    propertyDatabase[id as keyof typeof propertyDatabase] || null;
+  
+  // TypeScript now understands that 'property' is either a Property object or undefined
+  const property = propertyDatabase[id];
 
   if (!property) {
     return (
@@ -111,11 +88,12 @@ export default async function PropertyDetailsRoute({
           Property Not Found
         </h1>
         <p className="text-slate-600 mb-8">
-          Sorry, we couldnot find the property you are looking for.
+          Sorry, we could not find the property you are looking for.
         </p>
       </div>
     );
   }
 
+  // Passing the typed property to the wrapper will no longer throw a 'priceNumeric' error
   return <PropertyDetailsPageWrapper property={property} />;
 }

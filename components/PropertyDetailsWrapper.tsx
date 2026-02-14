@@ -7,6 +7,7 @@ interface Property {
   id: string;
   title: string;
   price: string;
+  priceNumeric: number;
   location: string;
   beds: number;
   baths: number;

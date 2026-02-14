@@ -6,15 +6,8 @@ import {
   Bed,
   Bath,
   Square,
-  TrendingUp,
-  Share2,
-  Heart,
   ChevronLeft,
-  Zap,
-  Car,
-  CheckCircle2,
   Calendar,
-  Star,
   Phone,
 } from "lucide-react";
 
@@ -39,13 +32,10 @@ interface PropertyDetailsPageProps {
   onBack: () => void;
 }
 
-type TabType = "overview" | "features" | "location";
-
 const PropertyDetailsPage = ({
   property,
   onBack,
 }: PropertyDetailsPageProps) => {
-  const [activeTab, setActiveTab] = useState<TabType>("overview");
 
   const mortgageCalc = (price: number): string => {
     const monthly = (price * 0.8) / (25 * 12);
