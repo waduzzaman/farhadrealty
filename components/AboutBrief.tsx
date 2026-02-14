@@ -10,7 +10,7 @@ export default function AboutBrief() {
         <div className="relative">
           <div className="relative w-full h-96 md:h-full rounded-3xl shadow-2xl overflow-hidden bg-slate-200 flex items-center justify-center">
             <img
-              src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
+              src="/farhad.jpg"
               alt="Farhad - Real Estate Expert and Principal Consultant"
               className="w-full h-full object-cover"
               loading="eager"

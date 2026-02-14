@@ -25,9 +25,9 @@ export default function AboutPage() {
           <div className="grid md:grid-cols-2 gap-16 items-center mb-16">
             {/* Left Column - Professional Image */}
             <div className="relative">
-              <div className="relative w-full h-96 md:h-[500px] rounded-3xl shadow-2xl overflow-hidden bg-slate-200 flex items-center justify-center">
+              <div className="relative w-full h-96 md:h-125 rounded-3xl shadow-2xl overflow-hidden bg-slate-200 flex items-center justify-center">
                 <OptimizedImage
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80"
+                  src="/farhad.jpg"
                   alt="Farhad - Principal Consultant at Farhad Realty"
                   className="w-full h-full object-cover"
                   loading="eager"
@@ -43,13 +43,13 @@ export default function AboutPage() {
                 Meet Farhad
               </h2>
               <p className="text-slate-600 text-lg mb-6 leading-relaxed">
-                With over 15 years of dedicated service in Ontario's real estate market, Farhad has established himself as a trusted advisor for high-net-worth individuals and families seeking premium properties. His approach combines market expertise with personalized service, ensuring every client receives tailored solutions.
+                With over 15 years of dedicated service in Ontario  real estate market, Farhad has established himself as a trusted advisor for high-net-worth individuals and families seeking premium properties. His approach combines market expertise with personalized service, ensuring every client receives tailored solutions.
               </p>
               <p className="text-slate-600 text-lg mb-6 leading-relaxed">
                 Specializing in luxury residential properties across Toronto, Richmond Hill, Oakville, and the Greater Toronto Area, Farhad brings strategic insight and industry connections that deliver results. His track record speaks to a commitment to excellence and client satisfaction above all else.
               </p>
               <p className="text-slate-600 text-lg leading-relaxed">
-                Whether you're buying, selling, or investing, Farhad's consultative approach ensures you make informed decisions with confidence and clarity.
+                Whether you are buying, selling, or investing, Farhad s consultative approach ensures you make informed decisions with confidence and clarity.
               </p>
             </div>
           </div>
@@ -149,7 +149,7 @@ export default function AboutPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 bg-gradient-to-r from-slate-900 to-slate-800 text-white">
+      <section className="py-24 bg-linear-to-r from-slate-900 to-slate-800 text-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-black mb-6 tracking-tighter">
             Ready to Work Together?
